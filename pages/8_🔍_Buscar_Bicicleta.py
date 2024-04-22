@@ -17,7 +17,7 @@ if sub:
     st.session_state['search_button'] = True
 
 if st.session_state['search_button']:
-    infos = requests.get(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/livros/{id}')
+    infos = requests.get(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/bikes/{id}')
 
     if infos.status_code == 200:
         infos = infos.json()
@@ -54,7 +54,7 @@ if st.session_state['search_button']:
                     st.error(f"Erro no servidor, tente novamente mais tarde.")
             
             elif delete:
-                infos = requests.delete(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/livros/{id}')
+                infos = requests.delete(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/bikes/{id}')
                 if infos.status_code == 200:
                     st.info(f"A bike com ID={id} foi deletado com sucesso.")
                 elif infos.status_code == 500:

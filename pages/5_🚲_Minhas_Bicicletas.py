@@ -7,7 +7,7 @@ st.set_page_config(page_title="Minhas Bicicletas", layout="wide")
 
 st.title('Minhas Bicicletas')
 
-infos = requests.get('https://asp3-gabarito-720a4403f44a.herokuapp.com/livros')
+infos = requests.get('https://asp3-gabarito-720a4403f44a.herokuapp.com/bikes')
 try:
     infos = pd.DataFrame(infos.json())
     infos.columns = ['_id', 'marca', 'modelo', 'cidade', 'disponibilidade']

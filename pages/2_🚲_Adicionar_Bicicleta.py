@@ -4,11 +4,6 @@ import requests
 
 st.set_page_config(page_title="Adicionar Bicicleta", layout="wide")
 
-if 'auth_status' not in st.session_state or not st.session_state.auth_status:
-    st.info('Por favor, faça o login ou faça o cadastro.')
-    sleep(3)
-    st.switch_page('./app.py')
-
 st.title('Adicionar Bicicleta')
 
 with st.form("criar_bike_form"):
@@ -35,7 +30,7 @@ if sub:
         st.error('Insira as informações necessárias.')
 
     else:
-        infos = requests.post('https://asp3-gabarito-720a4403f44a.herokuapp.com/livros', json=info)
+        infos = requests.post('https://asp3-gabarito-720a4403f44a.herokuapp.com/bikes', json=info)
         if infos.status_code == 500:
             st.error('Erro no servidor. Tente novamente mais tarde.')
         elif infos.status_code == 201:
