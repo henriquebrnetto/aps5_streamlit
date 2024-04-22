@@ -1,0 +1,9 @@
+[theme]
+backgroundColor = "Black"
+secondaryBackgroundColor = "DimGrey"
+primaryColor = "Khaki"
+textColor = "GhostWhite"
+font = "serif"
+
+[client]
+showSidebarNavigation = false
