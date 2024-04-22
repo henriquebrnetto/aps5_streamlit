@@ -1,4 +1,7 @@
 import streamlit as st
+import requests
+
+import streamlit as st
 from time import sleep
 import os
 
