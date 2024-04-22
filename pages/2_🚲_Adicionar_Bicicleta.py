@@ -12,24 +12,26 @@ if 'auth_status' not in st.session_state or not st.session_state.auth_status:
 st.title('Adicionar Bicicleta')
 
 with st.form("criar_bike_form"):
-    titulo = st.text_input("Título:")
-    autor = st.text_input("Autor:")
-    ano_publicacao = st.text_input("Ano de Publicação:")
-    
-    opt = ('Comédia', 'Terror', 'Romance', 'Drama')
-    genero = st.selectbox("Gênero do Livro:", opt)
+    marca = st.text_input("Marca:")
+    modelo = st.text_input("Modelo:")
+    cidade = st.text_input("Cidade:")
+    disponibilidade = st.radio(
+    "Disponibilidade",
+    ["Disponivel", "Indisponivel"]
+)
+
+
     sub = st.form_submit_button("Cadastrar")
 
 if sub:
     info = {
-        'Livro' :
-            {'titulo' : titulo,
-            'autor' : autor,
-            'anopublicacao' : ano_publicacao,
-            'genero' : genero}
-    }
+            'marca' : marca,
+            'modelo' : modelo,
+            'cidade' : cidade,
+            'disponibilidade' : disponibilidade
+            }
     
-    if '' in info['Livro'].values():
+    if '' in info.values():
         st.error('Insira as informações necessárias.')
 
     else:

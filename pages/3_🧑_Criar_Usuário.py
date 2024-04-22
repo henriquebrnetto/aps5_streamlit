@@ -7,21 +7,19 @@ st.title('Criar Usuário')
 
 with st.form("criar_usuario_form"):
     nome = st.text_input("Nome:")
-    user = st.text_input("E-mail:")
     cpf = st.text_input("CPF:")
+    data_nascimento = st.date_input("Data de Nascimento:")
+
     sub = st.form_submit_button("Cadastrar")
 
 if sub:
     info = {
-        'Usuario' :
-            {
             'nome' : nome,
-            'email' : user,
-            'cpf' : cpf
-            }
-    }
+            'cpf' : cpf,
+            'data_nascimento' : data_nascimento
+        }
 
-    if '' in info['Usuario'].values():
+    if '' in info.values():
         st.error('Insira as informações necessárias.')
 
     else:
