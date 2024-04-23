@@ -11,7 +11,7 @@ st.set_page_config(page_title="Minhas Bicicletas", layout="wide")
 st.page_link('./1_🏠_Página_Inicial.py')
 st.title('Minhas Bicicletas')
 
-infos = requests.get('http://127.0.0.1:5000/bikes')
+infos = requests.get('https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/bikes')
 try:
     infos = pd.DataFrame(infos.json()['bicicletas'], columns=['_id', 'marca', 'modelo', 'cidade', 'disponibilidade'])
     infos['disponibilidade'] = infos['disponibilidade'].apply(disponivel)

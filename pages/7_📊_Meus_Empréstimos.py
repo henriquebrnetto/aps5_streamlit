@@ -9,7 +9,7 @@ st.title('Meus Empréstimos')
 
 def display_loans():
     try:
-        loans = requests.get('http://127.0.0.1:5000/emprestimos')
+        loans = requests.get('https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/emprestimos')
         loans = pd.DataFrame(loans.json())
         loans = loans[['id_usuario', 'id_bicicleta']]  # Ajuste para mostrar apenas IDs dos usuários e das bicicletas
         st.table(loans)
@@ -19,7 +19,7 @@ def display_loans():
 
 def delete_loan(user_id, bike_id):
     try:
-        response = requests.delete(f'http://127.0.0.1:5000/emprestimos/usuarios/{user_id}/bikes/{bike_id}')
+        response = requests.delete(f'https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/emprestimos/usuarios/{user_id}/bikes/{bike_id}')
         if response.status_code == 200:
             st.success('Empréstimo deletado com sucesso!')
         else:

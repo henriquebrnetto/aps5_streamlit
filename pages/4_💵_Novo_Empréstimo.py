@@ -10,7 +10,7 @@ st.title('Criar Novo Empréstimo')
 
 def add_loan(user_id, bike_id):
     try:
-        response = requests.post(f'http://127.0.0.1:5000/emprestimos/usuarios/{user_id}/bikes/{bike_id}')
+        response = requests.post(f'https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/emprestimos/usuarios/{user_id}/bikes/{bike_id}')
         if response.status_code == 200:
             st.success('Empréstimo adicionado com sucesso!')
         else:

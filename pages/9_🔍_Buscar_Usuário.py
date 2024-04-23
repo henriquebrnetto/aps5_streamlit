@@ -18,10 +18,10 @@ if sub:
     st.session_state['search_button_user'] = True
 
 if st.session_state['search_button_user']:
-    usuarios = requests.get('http://127.0.0.1:5000/usuarios').json()
+    usuarios = requests.get('https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/usuarios').json()
 
 
-    infos = requests.get(f'http://127.0.0.1:5000/usuarios/{id}')
+    infos = requests.get(f'https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/usuarios/{id}')
 
     if infos.status_code == 200:
         infos = infos.json()
@@ -44,7 +44,7 @@ if st.session_state['search_button_user']:
                 if cpf == infos['cpf']:
                     del info['Usuario']['cpf']
 
-                infos = requests.put(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/usuarios/{id}', json=info)
+                infos = requests.put(f'https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/usuarios/{id}', json=info)
                 if infos.status_code == 200:
                     st.info(f"As informações do usuário com e-mail \"{id}\" foram atualizadas com sucesso.")
                 
@@ -55,7 +55,7 @@ if st.session_state['search_button_user']:
                     st.error(f"Erro no servidor, tente novamente mais tarde.")
             
             if delete:
-                infos = requests.delete(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/usuarios/{id}')
+                infos = requests.delete(f'https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/usuarios/{id}')
 
                 if infos.status_code == 200:
                     st.info(f"O usuário com e-mail \"{id}\" foi deletado com sucesso.")

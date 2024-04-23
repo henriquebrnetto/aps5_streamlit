@@ -24,7 +24,7 @@ if sub:
         st.error('Insira as informações necessárias.')
 
     else:
-        infos = requests.post('http://127.0.0.1:5000/usuarios', json=info)
+        infos = requests.post('https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/usuarios', json=info)
         if infos.status_code == 500:
             st.error('Erro no servidor. Tente novamente mais tarde.')
         elif infos.status_code == 201:

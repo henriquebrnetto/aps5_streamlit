@@ -18,7 +18,7 @@ if sub:
     st.session_state['search_button'] = True
 
 if st.session_state['search_button']:
-    infos = requests.get(f'http://127.0.0.1:5000/bikes/{id}')
+    infos = requests.get(f'https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com//bikes/{id}')
 
     if infos.status_code == 200:
         infos = infos.json()
@@ -46,7 +46,7 @@ if st.session_state['search_button']:
                     }
                 
 
-                infos = requests.put(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/bikes/{id}', json=info)
+                infos = requests.put(f'https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com//bikes/{id}', json=info)
                 if infos.status_code == 200:
                     st.info(f"As informações da Bike com ID={id} foram atualizadas com sucesso.")
                 elif infos.status_code == 400:
@@ -55,7 +55,7 @@ if st.session_state['search_button']:
                     st.error(f"Erro no servidor, tente novamente mais tarde.")
             
             elif delete:
-                infos = requests.delete(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/bikes/{id}')
+                infos = requests.delete(f'https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/bikes/{id}')
                 if infos.status_code == 200:
                     st.info(f"A bike com ID={id} foi deletado com sucesso.")
                 elif infos.status_code == 500:

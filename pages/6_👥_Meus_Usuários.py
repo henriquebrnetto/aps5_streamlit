@@ -8,7 +8,7 @@ st.set_page_config(page_title="Meus Usuários", layout="wide")
 st.page_link('./1_🏠_Página_Inicial.py')
 st.title('Meus Usuários')
 
-infos = requests.get('http://127.0.0.1:5000/usuarios')
+infos = requests.get('https://aps5-bucci-ikawa-4a310cd3a1d2.herokuapp.com/usuarios')
 try:
     print(infos.json())
     infos = pd.DataFrame(infos.json()['usuarios'], columns=['_id', 'nome', 'cpf', 'data_nascimento'])
