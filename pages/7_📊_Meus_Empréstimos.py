@@ -3,11 +3,13 @@ import requests
 import pandas as pd
 
 st.set_page_config(page_title="Meus Empréstimos", layout="wide")
+
+st.page_link('./1_🏠_Página_Inicial.py')
 st.title('Meus Empréstimos')
 
 def display_loans():
     try:
-        loans = requests.get('https://asp3-gabarito-720a4403f44a.herokuapp.com/emprestimos')
+        loans = requests.get('http://127.0.0.1:5000/emprestimos')
         loans = pd.DataFrame(loans.json())
         loans = loans[['id_usuario', 'id_bicicleta']]  # Ajuste para mostrar apenas IDs dos usuários e das bicicletas
         st.table(loans)
@@ -17,7 +19,7 @@ def display_loans():
 
 def delete_loan(user_id, bike_id):
     try:
-        response = requests.delete(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/emprestimos/usuarios/{user_id}/bikes/{bike_id}')
+        response = requests.delete(f'http://127.0.0.1:5000/emprestimos/usuarios/{user_id}/bikes/{bike_id}')
         if response.status_code == 200:
             st.success('Empréstimo deletado com sucesso!')
         else:

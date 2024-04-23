@@ -3,14 +3,18 @@ from time import sleep
 import requests
 import pandas as pd
 
+def disponivel(val):
+    return 'Disponível' if val == True else 'Em Uso'
+
 st.set_page_config(page_title="Minhas Bicicletas", layout="wide")
 
+st.page_link('./1_🏠_Página_Inicial.py')
 st.title('Minhas Bicicletas')
 
-infos = requests.get('https://asp3-gabarito-720a4403f44a.herokuapp.com/bikes')
+infos = requests.get('http://127.0.0.1:5000/bikes')
 try:
-    infos = pd.DataFrame(infos.json())
-    infos.columns = ['_id', 'marca', 'modelo', 'cidade', 'disponibilidade']
+    infos = pd.DataFrame(infos.json()['bicicletas'], columns=['_id', 'marca', 'modelo', 'cidade', 'disponibilidade'])
+    infos['disponibilidade'] = infos['disponibilidade'].apply(disponivel)
     infos.sort_values(by='_id', inplace=True, ignore_index=True)
     st.table(infos)
     

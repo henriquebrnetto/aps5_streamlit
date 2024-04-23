@@ -7,6 +7,7 @@ st.set_page_config(page_title="Buscar Usuário", layout="wide")
 if 'search_button_user' not in st.session_state:
     st.session_state['search_button_user'] = False
 
+st.page_link('./1_🏠_Página_Inicial.py')
 st.title('Buscar Usuário')
 
 with st.form("buscar_usuario_form"):
@@ -17,10 +18,10 @@ if sub:
     st.session_state['search_button_user'] = True
 
 if st.session_state['search_button_user']:
-    usuarios = requests.get('https://asp3-gabarito-720a4403f44a.herokuapp.com/usuarios').json()
+    usuarios = requests.get('http://127.0.0.1:5000/usuarios').json()
 
 
-    infos = requests.get(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/usuarios/{id}')
+    infos = requests.get(f'http://127.0.0.1:5000/usuarios/{id}')
 
     if infos.status_code == 200:
         infos = infos.json()

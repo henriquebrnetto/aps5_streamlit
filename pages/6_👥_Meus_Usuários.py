@@ -5,12 +5,13 @@ import pandas as pd
 
 st.set_page_config(page_title="Meus Usuários", layout="wide")
 
+st.page_link('./1_🏠_Página_Inicial.py')
 st.title('Meus Usuários')
 
-infos = requests.get('https://asp3-gabarito-720a4403f44a.herokuapp.com/usuarios')
+infos = requests.get('http://127.0.0.1:5000/usuarios')
 try:
-    infos = pd.DataFrame(infos.json())
-    infos.columns = ['_id', 'nome', 'cpf', 'data_nascimento']
+    print(infos.json())
+    infos = pd.DataFrame(infos.json()['usuarios'], columns=['_id', 'nome', 'cpf', 'data_nascimento'])
     infos.sort_values(by='_id', inplace=True, ignore_index=True)
     st.table(infos)
     

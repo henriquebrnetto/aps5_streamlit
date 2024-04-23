@@ -4,6 +4,7 @@ import requests
 
 st.set_page_config(page_title="Adicionar Bicicleta", layout="wide")
 
+st.page_link('./1_🏠_Página_Inicial.py')
 st.title('Adicionar Bicicleta')
 
 with st.form("criar_bike_form"):
@@ -30,7 +31,7 @@ if sub:
         st.error('Insira as informações necessárias.')
 
     else:
-        infos = requests.post('https://asp3-gabarito-720a4403f44a.herokuapp.com/bikes', json=info)
+        infos = requests.post('http://127.0.0.1:5000/bikes', json=info)
         if infos.status_code == 500:
             st.error('Erro no servidor. Tente novamente mais tarde.')
         elif infos.status_code == 201:

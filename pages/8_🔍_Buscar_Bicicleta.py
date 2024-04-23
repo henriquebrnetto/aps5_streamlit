@@ -7,6 +7,7 @@ st.set_page_config(page_title="Buscar Bicicleta", layout="wide")
 if 'search_button' not in st.session_state:
     st.session_state['search_button'] = False
 
+st.page_link('./1_🏠_Página_Inicial.py')
 st.title('Buscar Bicicleta')
 
 with st.form("buscar_bicicleta_form"):
@@ -17,7 +18,7 @@ if sub:
     st.session_state['search_button'] = True
 
 if st.session_state['search_button']:
-    infos = requests.get(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/bikes/{id}')
+    infos = requests.get(f'http://127.0.0.1:5000/bikes/{id}')
 
     if infos.status_code == 200:
         infos = infos.json()

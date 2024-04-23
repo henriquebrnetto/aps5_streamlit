@@ -4,12 +4,13 @@ import requests
 
 st.set_page_config(page_title="Criar emprestimo", layout="wide")
 
+st.page_link('./1_🏠_Página_Inicial.py')
 st.title('Criar Novo Empréstimo')
  
 
 def add_loan(user_id, bike_id):
     try:
-        response = requests.post(f'https://asp3-gabarito-720a4403f44a.herokuapp.com/emprestimos/usuarios/{user_id}/bikes/{bike_id}')
+        response = requests.post(f'http://127.0.0.1:5000/emprestimos/usuarios/{user_id}/bikes/{bike_id}')
         if response.status_code == 200:
             st.success('Empréstimo adicionado com sucesso!')
         else:
